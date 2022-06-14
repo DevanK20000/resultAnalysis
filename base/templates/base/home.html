@@ -1,0 +1,98 @@
+{% extends 'main.html' %} {% block content %} {% load static %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="{% static 'js/dragdrop-box.js' %}"></script>
+<link href="{% static 'css/dragdrop.css' %}" rel="stylesheet" />
+<div class="container-fluid">
+  {% if request.user.is_authenticated %}
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Upload PDF</h6>
+    </div>
+    <div class="card-body">
+      <form method="post" id="myform" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="file-droppable">
+          <div>Drag-n-drop PDF here</div>
+          <span>&times;</span>
+          <input type="file" name="pdf" />
+        </div>
+        <br />
+        <span class="text">Select Class</span>
+        <select name="select" id="select" class="form-select">
+          <option selected value="mca_sem1">MCA SEM 1</option>
+          <option value="mca_sem2">MCA SEM 2</option>
+          <option value="mca_sem3">MCA SEM 3</option>
+        </select>
+        <br />
+        <br />
+        <a
+          href="#"
+          onclick="document.getElementById('myform').submit()"
+          class="btn btn-success btn-icon-split"
+        >
+          <span class="icon text-white-50">
+            <i class="fas fa-arrow-right"></i>
+          </span>
+          <span class="text">Process</span>
+        </a>
+      </form>
+    </div>
+  </div>
+
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Upload excel</h6>
+    </div>
+    <div class="card-body">
+      <form method="post" id="analysis" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="file-droppable">
+          <div>Drag-n-drop excel here</div>
+          <span>&times;</span>
+          <input type="file" name="excel" />
+        </div>
+        <br />
+        <span class="text">Select Class</span>
+        <select name="analyze_select" id="analyze_select" class="form-select">
+          <option selected value="mca_sem1">MCA SEM 1</option>
+          <option value="mca_sem2">MCA SEM 2</option>
+          <option value="mca_sem3">MCA SEM 3</option>
+        </select>
+        <br />
+        <br />
+        <a
+          href="#"
+          onclick="document.getElementById('analysis').submit()"
+          class="btn btn-success btn-icon-split"
+        >
+          <span class="icon text-white-50">
+            <i class="fas fa-arrow-right"></i>
+          </span>
+          <span class="text">Analyze</span>
+        </a>
+      </form>
+    </div>
+  </div>
+
+  {% if messages %}
+  <div class="col-lg-6 mb-4">
+    <div class="card bg-danger text-white shadow">
+      <div class="card-body">
+        ERROR
+        <br />
+        <div class="text-white-50 small">
+          <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %} {% else %}
+
+  <h1>Please Login</h1>
+  {% endif %}
+</div>
+{% endblock %}

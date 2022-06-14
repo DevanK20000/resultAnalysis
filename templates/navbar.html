@@ -1,0 +1,35 @@
+{% load static %}
+<nav
+  class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+>
+  <!-- Topbar Navbar -->
+  <a
+    class="sidebar-brand d-flex align-items-center justify-content-center"
+    href="{% url 'home' %}"
+  >
+    <div class="sidebar-brand-text mx-2 h2">Result Analysis</div>
+  </a>
+  <div class="navbar-nav ml-auto">
+    <!-- Nav Item - User Information -->
+    <div class="nav-item dropdown no-arrow">
+      <div
+        class="nav-link"
+      >
+        <span class="mr-2 d-none d-lg-inline text-gray-600 small"
+          >{{ user.get_username }}</span
+        >
+        <img
+          class="img-profile rounded-circle"
+          src="{% static 'img/undraw_profile.svg' %}"
+        />
+      </div>
+    </div>
+    </div>
+    <div class="topbar-divider d-none d-sm-block"></div>
+    <div class="modal-footer">
+        
+        <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
+      </div>
+  </div>
+</nav>
+
