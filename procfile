@@ -1,1 +1,2 @@
 web: gunicorn resultAnalysis.wsgi
+heroku ps:scale web=1
