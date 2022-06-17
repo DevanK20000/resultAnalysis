@@ -11,6 +11,6 @@ urlpatterns = [
     path('table/', views.table, name='table'),
     path('download/<str:pk>', views.download, name='download'),
     path('', views.home, name='home'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 handler404 = "base.views.page_not_found_view"
