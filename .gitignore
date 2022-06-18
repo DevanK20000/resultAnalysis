@@ -2,3 +2,5 @@
 .env
 /media/
 /.venv/
+resultAnalysis/__pycache__/
+base/__pycache__/
